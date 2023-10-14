@@ -144,7 +144,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
             title: mwConfig.wgPageName,
             prependtext: "\n"+PRDText + "\n",
             summary: PRDSummary,
-            //tags: 'Musa3id',
+            tags: 'Musa3id',
             format: 'json'
         }).done(function() {
             location.reload();
@@ -168,7 +168,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
             title: 'User_talk:' + Author,
             appendtext: '\n' + message+'\n--~~~~',
             summary: 'تنبيه: اقتراح حذف  [[' + mwConfig.wgPageName.replace(/_/g, " ") + ']].',
-            //tags: 'Musa3id',
+            tags: 'Musa3id',
             format: 'json'
         });
     }

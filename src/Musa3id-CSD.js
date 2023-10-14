@@ -696,7 +696,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
                 title: mwConfig.wgPageName,
                 prependtext: CSDReason + "\n",
                 summary: CSDSummary,
-                //tags: 'Musa3id',
+                tags: 'Musa3id',
                 format: 'json'
             }).done(function() {
                 location.reload();
@@ -727,7 +727,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
                 title: 'User_talk:' + Author,
                 appendtext: '\n' + message +'\n--~~~~' ,
                 summary: 'طلب حذف سريع لصفحة ' + '[[' + mwConfig.wgPageName.replace(/_/g, " ") + ']]',
-                //tags: 'Musa3id',
+                tags: 'Musa3id',
                 format: 'json'
             }).done(function() {});
 */

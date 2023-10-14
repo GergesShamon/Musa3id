@@ -168,7 +168,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
                 /* + "|" + warningLevel.getValue() */
                    + "}}\n--~~~~" + "\n",
 			summary: 'تنبيه مستخدم',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			watchlist: 'unwatch',
 			format: 'json'
 		}).done(function() {

@@ -123,7 +123,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
                         +"\n" + '|سبب = '+ RDRRationale + ' '  + rationaleInput.value
                         +"\n" + '}}'+"\n" ,
             summary: 'طلب إخفاء مراجعة في [['+ mwConfig.wgPageName.replace(/_/g, " ")+']]',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
             mw.notify('تم العملية بنجاح. انتظر قليلا.',{ autoHide: false});

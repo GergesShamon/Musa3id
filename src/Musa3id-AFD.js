@@ -153,7 +153,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			title: mwConfig.wgPageName,
 			prependtext: AfDTemplate + "\n",
 			summary: 'هذه الصفحة مرشحة [[وب:شطب|للحذف السريع]]',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			createNominationPage(PageAFDX);
@@ -179,7 +179,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			appendtext: '{{subst:مقالة للحذف/سبب الاقتراح|pg = ' + mwConfig.wgPageName.replace(/_/g, " ") 
 			      + '|سبب الحذف= ' + rationaleInput.value + ' ~~~~ }}' + "\n",
 			summary: 'اقتراح حذف',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			addNominationToAfdPage(PageAFDX);
@@ -207,7 +207,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 					title: "ويكيبيديا:نقاش الحذف",
 					text: pageContent.replace(/-->/g,"-->\n" + "{{حذف/للحذف|" + PageAFDX.replace(/_/g, " ") +"|"+ date_َAFD + "}}"),
 					summary: "ترشيح [[ويكيبيديا:نقاش الحذف|للحذف]]: إضافة إلى القائمة.",
-					//tags: 'Musa3id',
+					tags: 'Musa3id',
 					format: 'json'
 				}).done(function() {
 					//addNominationToAfdLogPage(PageAFDX);
@@ -241,7 +241,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 					appendtext: "\n" + "{{حذف/للحذف|" + PageAFDX.replace(/_/g, " ")                     
                                      +"|"+ date_َAFD + "}}",
 					summary: "ترشيح [[ويكيبيديا:نقاش الحذف/أرشيف/" + month_name + " " + date_year + "|الشهر الحالي]] أضيفت إلى سجلاتك.",
-					//tags: 'Musa3id',
+					tags: 'Musa3id',
 					format: 'json'
 				}).done(function() {
 					window.location = '/wiki/ويكيبيديا:نقاش الحذف/' + PageAFDX.replace(/_/g, " ");
@@ -259,7 +259,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 				title: 'User:'.concat(mwConfig.wgUserName, '/' + localStorage.getItem("afdLogPageName") + '').split(' ').join('_'),
 				appendtext: "\n" + "# '''[[ويكيبيديا:نقاش الحذف/" + PageAFDX.replace(/_/g, " ") + "|" + mwConfig.wgPageName.replace(/_/g, " ") + "]]''' رشحت هذه صفحة للحذف ~~~~~",
 				summary: 'تم الاحتفاظ بسجل للصفحة المرشحة للحذف.',
-				//tags: 'Musa3id',
+				tags: 'Musa3id',
 				format: 'json'
 			}).done(function() {});
 		}
@@ -282,7 +282,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			title: 'User_talk:' + Author,
 			appendtext: '\n' + message,
 			summary: '[[' + mwConfig.wgPageName.replace(/_/g, " ") + ']]' + ' مرشحة للحذف',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {});
 	}

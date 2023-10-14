@@ -181,7 +181,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			action: 'edit',
 			title: 'User:' + mwConfig.wgUserName + '/Musa3id-options.js',
 			text: UpdatedOptions,
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			summary: '[[WP:Musa3id|Musa3id]] user settings has been updated',
 			format: 'json'
         }).done(function() {

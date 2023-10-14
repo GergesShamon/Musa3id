@@ -165,7 +165,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			section: sectionNumber,
 			appendtext: "\n" + ":{{yk:Cevap}} " + MentorResponse + ' ~~~~',
 			summary: 'Danışana cevap verildi.',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			location.reload();

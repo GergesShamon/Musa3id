@@ -85,7 +85,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 				"\n| السبب =" + rationaleInput.value +
 				"\n| العنوان النهائي = \n\}\}\n",
 			summary: '[[وب:طن|طلبات النقل]] الصفحات',
-			//tags: 'Musa3id',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			window.location = '/wiki/ويكيبيديا:طلبات_النقل';

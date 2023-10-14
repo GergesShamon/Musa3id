@@ -683,7 +683,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			title: nominationPage,
 			appendtext: "\n" + opinionText,
 			summary: 'Adaylığa görüş bildirildi',
-			//tags: 'Adiutor',
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			if(afdNominateOpinionsLog) {
