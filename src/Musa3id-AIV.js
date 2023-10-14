@@ -20,13 +20,13 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 	}
 	OO.inheritClass(RevisionDeleteRequestDialog, OO.ui.ProcessDialog);
 	RevisionDeleteRequestDialog.static.name = 'RevisionDeleteRequestDialog';
-	RevisionDeleteRequestDialog.static.title = 'Musa3id (Beta) - Kullanıcı Raporlama';
+	RevisionDeleteRequestDialog.static.title = 'Musa3id (Beta) - الإبلاغ عن مستخدم';
 	RevisionDeleteRequestDialog.static.actions = [{
 		action: 'save',
-		label: 'Raporla',
+		label: 'تنفيذ',
 		flags: ['primary', 'progressive']
 	}, {
-		label: 'İptal',
+		label: 'إلغاء',
 		flags: 'safe'
 	}];
 	RevisionDeleteRequestDialog.prototype.initialize = function() {
@@ -36,20 +36,20 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 				items: [
 					new OO.ui.MenuOptionWidget({
 						data: 1,
-						label: 'Vandalizm'
+						label: 'تخريب'
 					}),
 					new OO.ui.MenuOptionWidget({
 						data: 2,
-						label: 'Kullanıcı Adı İhlali'
+						label: 'اسم مستخدم مخالف'
 					}),
 				]
 			},
-			label: "Raporlama Türü"
+			label: "سبب المنع"
 		});
 		var headerTitle = new OO.ui.MessageWidget({
 			type: 'notice',
 			inline: true,
-			label: new OO.ui.HtmlSnippet('<strong>Kullanıcı Engelleme Talebi (KET)</strong><br><small>Bu araç Vikipedi\'ye zarar veren kullanıcıların engellenmesine yönelik talepler için kullanılmaktadır. Bu araç vasıtası ile talepte bulunmadan önce kullanıcının Vikipedi kuralları ve engelleme politikası hakkında bilgilendirilmesi gerekmektedir.</small>')
+			label: new OO.ui.HtmlSnippet('<strong>طلب منع المستخدم</strong><br><small>تُستخدم هذه الأداة لطلبات منع المستخدمين الذين يضرون ويكيبيديا. قبل تقديم طلب عبر هذه الأداة، يجب إعلام المستخدم بقواعد ويكيبيديا وسياسة المنع.</small>')
 		});
 		this.content = new OO.ui.PanelLayout({
 			padded: true,
@@ -62,96 +62,89 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			switch(menuOption.getData()) {
 				case 1:
 					RequestRationale = new OO.ui.FieldsetLayout({
-						label: 'Talep Gerekçesi'
+						label: 'سبب الطلب'
 					});
 					RequestRationale.addItems([
 						new OO.ui.FieldLayout(VandalizedPage = new OO.ui.TextInputWidget({
 							value: ''
 						}), {
-							label: 'İlgili Sayfa',
-							help: 'Raporda herhangi bir sayfaya bağlantı vermemek için boş bırakın'
+							label: 'الصفحة ذات الصلة',
+							help: 'اتركه فارغًا لتجنب الارتباط بأي صفحات في التقرير'
 						}),
 						new OO.ui.FieldLayout(revisionID = new OO.ui.TextInputWidget({
 							value: ''
 						}), {
-							label: 'Revizyon ID',
-							help: 'Revizyon ID\'si eklememek için boş bırakın '
+							label: 'معرف المراجعة',
+							help: 'اتركه فارغًا لتجنب إضافة معرف المراجعة'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Birden çok kez uyarılmasına rağmen yapılan vandalizm',
+							data: 'التخريب على الرغم من التحذيرات المتعددة',
 						}), {
-							label: 'Birden çok kez uyarılmasına rağmen yapılan vandalizm',
+							label: 'التخريب على الرغم من التحذيرات المتعددة',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Engeli bittikten sonra (1 gün içinde) yapılan vandalizm',
+							data: 'التخريب بعد انتهاء المنع (خلال يوم واحد)',
 						}), {
-							label: 'Engeli bittikten sonra (1 gün içinde) yapılan vandalizm',
+							label: 'التخريب بعد انتهاء المنع (خلال يوم واحد)',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Sadece vandalizm amaçlı hesap',
+							data: 'الحساب لأغراض التخريب فقط',
 						}), {
-							label: 'Sadece vandalizm amaçlı hesap',
+							label: 'الحساب لأغراض التخريب فقط',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Yalnızca reklam amaçlı hesap',
+							data: 'الحساب لأغراض إعلانية فقط',
 						}), {
-							label: 'Yalnızca reklam amaçlı hesap',
-							align: 'inline'
-						}),
-						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
-							selected: false,
-							data: 'Spambot veya şifresi ele geçirilmiş hesap',
-						}), {
-							label: 'Spambot veya şifresi ele geçirilmiş hesap',
+							label: 'الحساب لأغراض إعلانية فقط',
 							align: 'inline'
 						}),
 					]);
 					break;
 				case 2:
 					RequestRationale = new OO.ui.FieldsetLayout({
-						label: 'Talep Gerekçesi'
+						label: 'سبب الطلب'
 					});
 					RequestRationale.addItems([
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Şaşırtıcı, yanlış yönlendirici, problem yaratıcı kullanıcı adı',
+							data: 'اسم مستخدم مربك ومضلل ومثير للمشاكل',
 						}), {
-							label: 'Şaşırtıcı, yanlış yönlendirici, problem yaratıcı kullanıcı adı',
+							label: 'اسم مستخدم مربك ومضلل ومثير للمشاكل',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Ticari marka içeren kullanıcı adı',
+							data: 'اسم المستخدم ذو العلامة التجارية',
 						}), {
-							label: 'Ticari marka içeren kullanıcı adı',
+							label: 'اسم المستخدم ذو العلامة التجارية',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Halen yaşayan ya da yeni ölmüş tanınmış kişi adı',
+							data: 'اسم شخص مشهور لا يزال على قيد الحياة أو توفي مؤخرا',
 						}), {
-							label: 'Halen yaşayan ya da yeni ölmüş tanınmış kişi adı',
+							label: 'اسم شخص مشهور لا يزال على قيد الحياة أو توفي مؤخرا',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Taciz edici veya karalayıcı kullanıcı adı',
+							data: 'اسم مستخدم مسيء أو تشهيري',
 						}), {
-							label: 'Taciz edici veya karalayıcı kullanıcı adı',
+							label: 'اسم مستخدم مسيء أو تشهيري',
 							align: 'inline'
 						}),
 						new OO.ui.FieldLayout(new OO.ui.CheckboxInputWidget({
 							selected: false,
-							data: 'Spam amaçlı veya reklam içeren kullanıcı adı',
+							data: 'اسم مستخدم غير مرغوب فيه أو إعلاني',
 						}), {
-							label: 'Spam amaçlı veya reklam içeren kullanıcı adı',
+							label: 'اسم مستخدم غير مرغوب فيه أو إعلاني',
 							align: 'inline'
 						}),
 					]);
@@ -178,16 +171,16 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			if(RDRRationale) {
 				return new OO.ui.Process(function() {
 					if(VandalizedPage.value) {
-						VandalizedPageInput = '[[' + VandalizedPage.value + ']] sayfası üzerinde ';
+						VandalizedPageInput = '[[' + VandalizedPage.value + ']] علي الصفحة ';
 					} else {
 						VandalizedPageInput = '';
 					}
 					if(revisionID.value) {
-						revId = '([[Özel:Fark/' + revisionID.value + '|fark]]) ';
+						revId = '([[خاص:الفرق/' + revisionID.value + '|الفرق]]) ';
 					} else {
 						revId = '';
 					}
-					PreparedText = '{{kopyala:Vikipedi:Kullanıcı engelleme talepleri/Önyükleme-şablon |1= ' + mwConfig.wgPageName.replace(/_/g, " ").replace('Kullanıcı:', '').replace('Özel:Katkılar/', '') + ' |2='.concat(VandalizedPageInput, revId, RDRRationale) + '}}';
+					PreparedText = '{{نسخ:طلب منع مستخدم|مستخدم= ' + mwConfig.wgPageName.replace(/_/g, " ").replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ' |سبب='.concat(VandalizedPageInput, revId, RDRRationale) + '}}';
 					addReport(PreparedText);
 					console.log(PreparedText);
 					dialog.close({
@@ -195,7 +188,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 					});
 				});
 			} else {
-				OO.ui.alert('Lütfen bir gerekçe seçiniz').done(function() {});
+				OO.ui.alert('الرجاء اختيار السبب').done(function() {});
 			}
 		}
 		return RevisionDeleteRequestDialog.super.prototype.getActionProcess.call(this, action);
@@ -209,13 +202,13 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 	function addReport(PreparedText) {
 		api.postWithToken('csrf', {
 			action: 'edit',
-			title: 'Vikipedi:Kullanıcı engelleme talepleri',
+			title: 'ويكيبيديا:إخطار الإداريين/منع/الحالية',
 			appendtext: "\n" + PreparedText + "\n",
-			summary: '[[Kullanıcı:' + mwConfig.wgPageName.replace(/_/g, " ").replace('Kullanıcı:', '').replace('Özel:Katkılar/', '') + ']] raporlandı.',
+			summary: 'طلب منع ال[[مستخدم:' + mwConfig.wgPageName.replace(/_/g, " ").replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ']]',
 			//tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
-			window.location = '/wiki/Vikipedi:Kullanıcı engelleme talepleri';
+			window.location = '/wiki/ويكيبيديا:إخطار الإداريين/منع/الحالية';
 		});
 	}
 });
