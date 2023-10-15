@@ -205,7 +205,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			title: 'ويكيبيديا:إخطار الإداريين/منع/الحالية',
 			appendtext: "\n" + PreparedText + "\n",
 			summary: 'طلب منع ال[[مستخدم:' + mwConfig.wgPageName.replace(/_/g, " ").replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ']]',
-			tags: 'Musa3id,
+			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
 			window.location = '/wiki/ويكيبيديا:إخطار الإداريين/منع/الحالية';
