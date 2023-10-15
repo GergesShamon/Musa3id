@@ -208,7 +208,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
                 RPPText = "{{نسخ:طلب حماية صفحة|توقيع=--~~~~"
                      +"\n|صفحة=" + mwConfig.wgPageName.replace(/_/g, " ")
                      +"\n|سبب =" + rationaleInput.value + "\n}}";
-                RPPSummary = 'طلب حماية المقالة [[' + mwConfig.wgPageName.replace(/_/g, " ") + ']]';
+                RPPSummary = 'طلب حماية الصفحة [[' + mwConfig.wgPageName.replace(/_/g, " ") + ']]';
                 addProtectionRequests(RPPText);
                 dialog.close({
                     action: action
