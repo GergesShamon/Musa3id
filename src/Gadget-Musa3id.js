@@ -129,11 +129,12 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
 
             if (mwConfig.wgPageName.includes('خاص:مساهمات') || mwConfig.wgNamespaceNumber === 2 || mwConfig.wgNamespaceNumber === 3 && !mwConfig.wgPageName.includes(mwConfig.wgUserName)) {
                 DefaultMenuItems.push(
-                    new OO.ui.MenuOptionWidget({
+                    /*
+		    new OO.ui.MenuOptionWidget({
                         icon: 'speechBubbleAdd',
                         data: 'welcome',
                         label: 'الترحيب بمستخدم',
-                    }),
+                    }),*/
                     new OO.ui.MenuOptionWidget({
                         icon: 'cancel',
                         data: 'report',
@@ -146,7 +147,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                         classes: ['Musa3id-top-user-menu'],
 					})
 			);}
-			if(!mwConfig.wgPageName.includes('خاص:مساهمات')) {
+	        if(!mwConfig.wgPageName.includes('خاص:مساهمات')) {
 				DefaultMenuItems.push(
                     new OO.ui.MenuOptionWidget({
                         icon: 'add',
@@ -244,26 +245,26 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                         break;
                 }
             });
-			if(!mwConfig.wgPageName.includes('الصفحة_الرئيسية')) {
-				switch(mwConfig.skin) {
-					case 'vector':
-						$('.mw-portlet-cactions').parent().append(Musa3idMenu.$element);
-						break;
-					case 'vector-2022':
-						$('.vector-collapsible').append(Musa3idMenu.$element);
-						break;
-					case 'monobook':
-						$('.mw-indicators').append(Musa3idMenu.$element);
-						break;
-					case 'timeless':
-						$('.mw-portlet-body').append(Musa3idMenu.$element);
-						break;
-					case 'minerva':
-						$('.page-actions-menu__list').append(Musa3idMenu.$element);
-						break;
-				}
+	if(!mwConfig.wgPageName.includes('الصفحة_الرئيسية')) {
+		switch(mwConfig.skin) {
+			case 'vector':
+				$('.mw-portlet-cactions').parent().append(Musa3idMenu.$element);
 				break;
-			}
+			case 'vector-2022':
+				$('.vector-collapsible').append(Musa3idMenu.$element);
+				break;
+			case 'monobook':
+				$('.mw-indicators').append(Musa3idMenu.$element);
+				break;
+			case 'timeless':
+				$('.mw-portlet-body').append(Musa3idMenu.$element);
+				break;
+			case 'minerva':
+				$('.page-actions-menu__list').append(Musa3idMenu.$element);
+				break;
+		}
+		break;
+	}
     }
 
     function checkOptions(title) {
@@ -279,7 +280,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
     switch (mwConfig.wgNamespaceNumber) {
         case 2:
         case 3:
-            var CurrentUserPage = mwConfig.wgPageName.replace(/User(\s|\_)mesaj\s*?\:\s*?(.*)/gi, "User:$2");
+            var CurrentUserPage = mwConfig.wgPageName.replace(/نقاش(\s|\_)المستخدم\s*?\:\s*?(.*)/gi, "User:$2");
             checkOptions(CurrentUserPage + '/Musa3id-options.js').then(function(data) {
                 if (data.query.pages["-1"]) {
                     //
