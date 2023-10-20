@@ -13,11 +13,21 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
     var progressBar = new OO.ui.ProgressBarWidget({
         progress: false
     });
+    var cancelButton = new OO.ui.ButtonWidget({
+    label: 'إلغاء',
+    flags: ['destructive'],
+    action: 'cancel'
+    });
     windowManager.openWindow(messageDialog, {
         title: 'التحقق ...',
-        message: progressBar.$element
+        message: progressBar.$element,
+        actions: [cancelButton]
     });
-    $.get("https://copyvios.toolforge.org/api.json?", {
+    var xhr;
+    cancelButton.on('click', function() {
+    xhr.abort();
+    });
+    xhr = $.get("https://copyvios.toolforge.org/api.json?", {
         action: "search",
         lang: "ar",
         project: "wikipedia",
