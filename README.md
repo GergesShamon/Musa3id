@@ -12,7 +12,6 @@
 | Musa3id-AFD-Helper.js | وحدة ... |
 | Musa3id-AFD.js | وحدة ترشيح للحذف |
 | Musa3id-AIV.js | وحدة تدخل إداري لمواجهة تخريب |
-| Musa3id-CMR.js | وحدة Canned mentor responses |
 | Musa3id-COV.js | وحدة التحقق من خروقات النشر |
 | Musa3id-CSD.js | وحدة طلبات الحذف السريع |
 | Musa3id-OPT.js | وحدة تعديل التفضيلات |
