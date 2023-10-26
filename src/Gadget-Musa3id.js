@@ -1,5 +1,4 @@
 /* 
-
  * Musa3id: A gadget to assist various user actions on arabic wikipedia. a fork of Adiutor (Author: Vikipolimer).
  * Author: وهراني (Wahrani)
  * licensed under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) and GNU Free Documentation License (GFDL). 
@@ -7,10 +6,9 @@
  */
 /* <nowiki> */
 
-var toolname = 'Musa3id'
+var toolname = 'Musa3id';
 var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
 	scriptpathafter = '&action=raw&ctype=text/javascript';
-
 
     var mwConfig = mw.config.get(["skin", "wgAction", "wgPageName", "wgNamespaceNumber", "wgTitle", "wgUserGroups", "wgUserName"]);
     api = new mw.Api();
@@ -60,7 +58,8 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                 action: 'edit',
                 title: 'User:' + mwConfig.wgUserName + '/'+toolname+'-options.js',
                 appendtext: Options,
-                summary: 'Created setting file',
+                summary: 'إنشاء ملف إعدادات',
+                tags: 'Musa3id',
                 format: 'json'
             };
             api = new mw.Api();
@@ -104,18 +103,6 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
         case 828:
         case 829:
 			// LOAD MODULES
-			if(mwConfig.wgNamespaceNumber === 3) {
-				var UserParams = {
-					action: 'query',
-					meta: 'userinfo',
-					uiprop: 'rights',
-					format: 'json'
-				};
-				api.get(UserParams).then(function(data) {
-					checkMentor(data.query.userinfo.id);
-				});
-			}
-            mw.loader.load(scriptpathbefore+'MediaWiki:Gadget-Musa3id-AFD-Helper.js'+scriptpathafter);
             
             //if (/(?:\?|&)(?:action|diff|oldid)=/.test(window.location.href)) 
             {
@@ -129,12 +116,11 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
 
             if (mwConfig.wgPageName.includes('خاص:مساهمات') || mwConfig.wgNamespaceNumber === 2 || mwConfig.wgNamespaceNumber === 3 && !mwConfig.wgPageName.includes(mwConfig.wgUserName)) {
                 DefaultMenuItems.push(
-                    /*
-		    new OO.ui.MenuOptionWidget({
+                    new OO.ui.MenuOptionWidget({
                         icon: 'speechBubbleAdd',
                         data: 'welcome',
                         label: 'الترحيب بمستخدم',
-                    }),*/
+                    }),
                     new OO.ui.MenuOptionWidget({
                         icon: 'cancel',
                         data: 'report',
@@ -147,7 +133,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                         classes: ['Musa3id-top-user-menu'],
 					})
 			);}
-	        if(!mwConfig.wgPageName.includes('خاص:مساهمات')) {
+			if(!mwConfig.wgPageName.includes('خاص:مساهمات')) {
 				DefaultMenuItems.push(
                     new OO.ui.MenuOptionWidget({
                         icon: 'add',
@@ -231,9 +217,6 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                     case 'warn':
                         mw.loader.load(scriptpathbefore+'MediaWiki:Gadget-Musa3id-WRN.js'+scriptpathafter);
                         break;
-                    case 'welcome':
-                        OO.ui.alert('Coming soon :)').done(function() {});
-                        break;
                     case 'rdr':
                         mw.loader.load(scriptpathbefore+'MediaWiki:Gadget-Musa3id-RDR.js'+scriptpathafter);
                         break;
@@ -245,26 +228,26 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                         break;
                 }
             });
-	if(!mwConfig.wgPageName.includes('الصفحة_الرئيسية')) {
-		switch(mwConfig.skin) {
-			case 'vector':
-				$('.mw-portlet-cactions').parent().append(Musa3idMenu.$element);
+			if(!mwConfig.wgPageName.includes('الصفحة_الرئيسية')) {
+				switch(mwConfig.skin) {
+					case 'vector':
+						$('.mw-portlet-cactions').parent().append(Musa3idMenu.$element);
+						break;
+					case 'vector-2022':
+						$('.vector-collapsible').append(Musa3idMenu.$element);
+						break;
+					case 'monobook':
+						$('.mw-indicators').append(Musa3idMenu.$element);
+						break;
+					case 'timeless':
+						$('.mw-portlet-body').append(Musa3idMenu.$element);
+						break;
+					case 'minerva':
+						$('.page-actions-menu__list').append(Musa3idMenu.$element);
+						break;
+				}
 				break;
-			case 'vector-2022':
-				$('.vector-collapsible').append(Musa3idMenu.$element);
-				break;
-			case 'monobook':
-				$('.mw-indicators').append(Musa3idMenu.$element);
-				break;
-			case 'timeless':
-				$('.mw-portlet-body').append(Musa3idMenu.$element);
-				break;
-			case 'minerva':
-				$('.page-actions-menu__list').append(Musa3idMenu.$element);
-				break;
-		}
-		break;
-	}
+			}
     }
 
     function checkOptions(title) {
@@ -280,7 +263,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
     switch (mwConfig.wgNamespaceNumber) {
         case 2:
         case 3:
-            var CurrentUserPage = mwConfig.wgPageName.replace(/نقاش(\s|\_)المستخدم\s*?\:\s*?(.*)/gi, "User:$2");
+            var CurrentUserPage = mwConfig.wgPageName.replace(/User(\s|\_)mesaj\s*?\:\s*?(.*)/gi, "User:$2");
             checkOptions(CurrentUserPage + '/Musa3id-options.js').then(function(data) {
                 if (data.query.pages["-1"]) {
                     //
@@ -310,7 +293,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                                 case "active":
                                     buttonSelect = new OO.ui.ButtonOptionWidget({
                                         framed: false,
-                                        label: 'Active',
+                                        label: 'نشط',
                                         data: 'active',
                                         classes: ['Musa3id-user-status-active'],
                                     });
@@ -319,7 +302,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                                 case "passive":
                                     buttonSelect = new OO.ui.ButtonOptionWidget({
                                         framed: false,
-                                        label: 'Passive',
+                                        label: 'قليل النشاط',
                                         data: 'passive',
                                         classes: ['Musa3id-user-status-passive'],
                                     });
@@ -328,7 +311,7 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                                 case "away":
                                     buttonSelect = new OO.ui.ButtonOptionWidget({
                                         framed: false,
-                                        label: 'Away',
+                                        label: 'غائب',
                                         data: 'away',
                                         classes: ['Musa3id-user-status-away'],
                                     });
@@ -344,19 +327,19 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                                             items: [
                                                 new OO.ui.MenuOptionWidget({
                                                     data: 'active',
-                                                    label: 'Active'
+                                                    label: 'نشط'
                                                 }),
                                                 new OO.ui.MenuOptionWidget({
                                                     data: 'passive',
-                                                    label: 'Passive'
+                                                    label: 'قليل النشاط'
                                                 }),
                                                 new OO.ui.MenuOptionWidget({
                                                     data: 'away',
-                                                    label: 'Away'
+                                                    label: 'غائب'
                                                 })
                                             ],
                                         },
-                                        label: 'Status',
+                                        label: 'الوضعية',
                                         classes: ['Musa3id-user-status-selector']
                                     });
                                     $('.mw-first-heading').append(dropdown.$element);
@@ -391,23 +374,11 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                 title: 'User:' + mwConfig.wgUserName + '/'+toolname+'-options.js',
                 text: JSON.stringify(ToolOptions),
                 summary: 'Updated [[WP:Musa3id|Musa3id]] settings.',
+                tags: 'Musa3id',
                 format: 'json'
             }).done(function() {
                 location.reload();
             });
-        });
-    }
-
-    function checkMentor(UserId) {
-		api.get({
-			action: 'parse',
-			page: "MediaWiki:GrowthMentors.json",
-			prop: 'wikitext',
-			format: "json"
-		}).done(function(data) {
-			if(data.parse.wikitext['*'].includes(UserId) && mwConfig.wgPageName.includes(mwConfig.wgUserName)) {
-                mw.loader.load(scriptpathbefore+'MediaWiki:Gadget-Musa3id-CMR.js'+scriptpathafter);
-            }
         });
     }
 
