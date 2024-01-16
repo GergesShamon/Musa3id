@@ -152,7 +152,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			action: 'edit',
 			title: mwConfig.wgPageName,
 			prependtext: AfDTemplate + "\n",
-			summary: 'هذه الصفحة مرشحة [[وب:شطب|للحذف السريع]]',
+			summary: 'هذه الصفحة مرشحة لنقاش الحذف',
 			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
@@ -177,7 +177,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			action: 'edit',
 			title: 'ويكيبيديا:نقاش الحذف/' + PageAFDX,
 			appendtext: '{{subst:مقالة للحذف/سبب الاقتراح|pg = ' + mwConfig.wgPageName.replace(/_/g, " ") 
-			      + '|سبب الحذف= ' + rationaleInput.value + ' ~~~~ }}' + "\n",
+			      + '|سبب الحذف= ' + rationaleInput.value + '}}' + "\n",
 			summary: 'اقتراح حذف',
 			tags: 'Musa3id',
 			format: 'json'
