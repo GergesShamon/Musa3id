@@ -204,7 +204,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 			action: 'edit',
 			title: 'ويكيبيديا:إخطار الإداريين/منع/الحالية',
 			appendtext: "\n" + PreparedText + "\n",
-			summary: 'طلب منع ال[[مستخدم:' + mwConfig.wgPageName.replace(/_/g, " ").replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ']]',
+			summary: 'طلب منع ال[[مستخدم:' + mwConfig.wgPageName.replace(/_/g, " ").replace('نقاش المستخدم:', '').replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ']]',
 			tags: 'Musa3id',
 			format: 'json'
 		}).done(function() {
