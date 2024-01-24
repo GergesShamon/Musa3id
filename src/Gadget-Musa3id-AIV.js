@@ -180,7 +180,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", ]),
 					} else {
 						revId = '';
 					}
-					PreparedText = '{{نسخ:طلب منع مستخدم|مستخدم= ' + mwConfig.wgPageName.replace(/_/g, " ").replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ' |سبب='.concat(VandalizedPageInput, revId, RDRRationale) + '}}';
+					PreparedText = '{{نسخ:طلب منع مستخدم|مستخدم= ' + mwConfig.wgPageName.replace(/_/g, " ").replace('نقاش المستخدم:', '').replace('مستخدم:', '').replace('خاص:مساهمات/', '') + ' |سبب='.concat(VandalizedPageInput, revId, RDRRationale) + '}}';
 					addReport(PreparedText);
 					console.log(PreparedText);
 					dialog.close({
