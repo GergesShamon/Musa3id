@@ -133,7 +133,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
         NameSpaceDeletionReasons = new OO.ui.RadioSelectWidget({
           items: OptionsGeneralReasons
         });
-      } else if ([0, 2, 6, 10, 14, 100].includes(mwConfig.wgNamespaceNumber)) {
+      } else if ([0, 2, 6, 10, 14, 100, 828].includes(mwConfig.wgNamespaceNumber)) {
         let Reasons = []
         switch (mwConfig.wgNamespaceNumber) {
           case 0:
@@ -153,6 +153,9 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
             break;
           case 100:
             Reasons = reasons.P;
+            break;
+          case 828:
+            Reasons = reasons.T;
         }
         Reasons.forEach(function(string) {
           OptionsNameSpaceReasons.push(new OO.ui.RadioOptionWidget({
@@ -331,7 +334,15 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
 
     function putCSDTemplate(api, reason, notify, salt) {
       let deferred = $.Deferred();
-      let prependtext = `{{شطب|${reason}}}\n${salt ? '{{Salt}}\n' : ''}`;
+      let prependtext;
+      if (mwConfig.wgNamespaceNumber == 10) {
+        prependtext = `<noinclude>{{شطب|${reason}}}\n${salt ? '{{Salt}}\n' : ''}</noinclude>`;
+      } else if (mwConfig.wgNamespaceNumber == 828){
+        prependtext = `require('Module:Module wikitext')._addText('{{شطب|${reason}}}\n${salt ? '{{Salt}}\n' : ''}')`;
+      } else {
+        prependtext = `{{شطب|${reason}}}\n${salt ? '{{Salt}}\n' : ''}`;
+      }
+      
       try {
         api.postWithToken('csrf', {
           action: 'edit',
