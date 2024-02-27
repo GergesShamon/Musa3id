@@ -358,7 +358,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
           getCreator(api).then(function(data) {
             if (notify) {
               var user = data.query.pages[mw.config.get('wgArticleId')].revisions[0].user;
-              var message = `{{تنبيه شطب 2|${mwConfig.wgPageName}|${reason}}}}`;
+              var message = `{{تنبيه شطب 2|${mwConfig.wgPageName}|${reason}}}`;
               sendMessageToAuthor(user, message);
             }
             deferred.resolve();
