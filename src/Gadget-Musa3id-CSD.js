@@ -131,7 +131,7 @@ $.when(mw.loader.using(["mediawiki.user", "oojs-ui-core", "oojs-ui-windows", 'me
           }));
         });
         NameSpaceDeletionReasons = new OO.ui.RadioSelectWidget({
-          items: OptionsGeneralReasons
+          items: OptionsNameSpaceReasons
         });
       } else if ([0, 2, 6, 10, 14, 100, 828].includes(mwConfig.wgNamespaceNumber)) {
         let Reasons = []
