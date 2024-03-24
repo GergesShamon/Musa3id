@@ -20,3 +20,4 @@
 | Musa3id-RDR.js | وحدة طلب إخفاء مراجعة |
 | Musa3id-RPP.js | وحدة طلب حماية صفحة |
 | Musa3id-WRN.js | وحدة تنبيه مستخدم |
+| Musa3id-MOV.js | وحدة نقل صفحة |

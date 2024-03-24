@@ -171,6 +171,11 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                         label: 'مكتشف Copyvio',
                     }),
                     new OO.ui.MenuOptionWidget({
+                      icon: 'move',
+                      data: 'move',
+                      label: 'نقل',
+                    }),
+                    new OO.ui.MenuOptionWidget({
                         icon: 'settings',
                         data: 6,
                         label: 'تفضيلات Musa3id',
@@ -226,6 +231,9 @@ var scriptpathbefore = mw.util.wikiScript('index') + '?title=',
                     case 'rpp':
                         mw.loader.load(scriptpathbefore+'MediaWiki:Gadget-Musa3id-RPP.js'+scriptpathafter);
                         break;
+                    case 'move':
+                      mw.loader.load(scriptpathbefore + 'MediaWiki:Gadget-Musa3id-MOV.js' + scriptpathafter);
+                      break;
                 }
             });
 			if(!mwConfig.wgPageName.includes('الصفحة_الرئيسية')) {
